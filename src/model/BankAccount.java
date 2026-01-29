@@ -38,16 +38,14 @@ public abstract class BankAccount {
     }
 
     public void withdraw(double amount) {
-        if (amount <= 0 ) {
-            System.out.println("Withdrawal amount must be positive.");
-            return;
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Withdrawal amount must be positive.");
         }
+
         if (amount > balance) {
-            System.out.println("Insufficient balance.");
-            return;
+            throw new exception.InsufficientBalanceException("Insufficient balance.");
         }
         balance -= amount;
-        System.out.println("Withdrawn: " + amount);
     }
 
     // Abstraction: subclass must implement this method
